@@ -1,11 +1,9 @@
-# Enumer [![GoDoc](https://godoc.org/github.com/dmarkham/enumer?status.svg)](https://godoc.org/github.com/dmarkham/enumer) [![Go Report Card](https://goreportcard.com/badge/github.com/dmarkham/enumer)](https://goreportcard.com/report/github.com/dmarkham/enumer) [![GitHub Release](https://img.shields.io/github/release/dmarkham/enumer.svg)](https://github.com/dmarkham/enumer/releases)[![Build Status](https://travis-ci.com/dmarkham/enumer.svg?branch=master)](https://travis-ci.com/dmarkham/enumer)
-
+# Enumer [![GoDoc](https://godoc.org/github.com/ysmood/enumer?status.svg)](https://godoc.org/github.com/ysmood/enumer) [![Go Report Card](https://goreportcard.com/badge/github.com/ysmood/enumer)](https://goreportcard.com/report/github.com/ysmood/enumer) [![GitHub Release](https://img.shields.io/github/release/dmarkham/enumer.svg)](https://github.com/ysmood/enumer/releases)[![Build Status](https://travis-ci.com/dmarkham/enumer.svg?branch=master)](https://travis-ci.com/dmarkham/enumer)
 
 Enumer is a tool to generate Go code that adds useful methods to Go enums (constants with a specific type).
 It started as a fork of [Rob Pike’s Stringer tool](https://godoc.org/golang.org/x/tools/cmd/stringer)
-maintained by [Álvaro López Espinosa](https://github.com/alvaroloes/enumer). 
-This was again forked here as (https://github.com/dmarkham/enumer) picking up where Álvaro left off.
-
+maintained by [Álvaro López Espinosa](https://github.com/alvaroloes/enumer).
+This was again forked here as (https://github.com/ysmood/enumer) picking up where Álvaro left off.
 
 ```
 $ ./enumer --help
@@ -14,7 +12,7 @@ Usage of ./enumer:
         Enumer [flags] -type T [directory]
         Enumer [flags] -type T files... # Must be a single package
 For more information, see:
-        http://godoc.org/github.com/dmarkham/enumer
+        http://godoc.org/github.com/ysmood/enumer
 Flags:
   -addprefix string
         transform each item name by adding a prefix. Default: ""
@@ -44,7 +42,6 @@ Flags:
         if true, yaml marshaling methods will be generated. Default: false
 ```
 
-
 ## Generated functions and methods
 
 When Enumer is applied to a type, it will generate:
@@ -71,7 +68,6 @@ When Enumer is applied to a type, it will generate:
   the enum conform to the `gopkg.in/yaml.v2.Marshaler` and `gopkg.in/yaml.v2.Unmarshaler` interfaces.
 - When the flag `sql` is provided, the methods for implementing the `Scanner` and `Valuer` interfaces.
   Useful when storing the enum in a database.
-
 
 For example, if we have an enum type called `Pill`,
 
@@ -198,7 +194,7 @@ name := MyTypeValue.String() // name => "my_type_value"
 For a module-aware repo with `enumer` in the `go.mod` file, generation can be called by adding the following to a `.go` source file:
 
 ```golang
-//go:generate go run github.com/dmarkham/enumer -type=YOURTYPE
+//go:generate go run github.com/ysmood/enumer -type=YOURTYPE
 ```
 
 There are four boolean flags: `json`, `text`, `yaml` and `sql`. You can use any combination of them (i.e. `enumer -type=Pill -json -text`),

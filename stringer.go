@@ -5,7 +5,7 @@
 // Enumer is a tool to generate Go code that adds useful methods to Go enums (constants with a specific type).
 // It started as a fork of Rob Pike’s Stringer tool
 //
-// Please visit http://github.com/dmarkham/enumer for a comprehensive documentation
+// Please visit http://github.com/ysmood/enumer for a comprehensive documentation
 package main
 
 import (
@@ -71,7 +71,7 @@ func Usage() {
 	_, _ = fmt.Fprintf(os.Stderr, "\tEnumer [flags] -type T [directory]\n")
 	_, _ = fmt.Fprintf(os.Stderr, "\tEnumer [flags] -type T files... # Must be a single package\n")
 	_, _ = fmt.Fprintf(os.Stderr, "For more information, see:\n")
-	_, _ = fmt.Fprintf(os.Stderr, "\thttp://godoc.org/github.com/dmarkham/enumer\n")
+	_, _ = fmt.Fprintf(os.Stderr, "\thttp://godoc.org/github.com/ysmood/enumer\n")
 	_, _ = fmt.Fprintf(os.Stderr, "Flags:\n")
 	flag.PrintDefaults()
 }
@@ -774,9 +774,10 @@ func (g *Generator) buildOneRun(runs [][]Value, typeName string) {
 }
 
 // Arguments to format are:
-// 	[1]: type name
-// 	[2]: size of index element (8 for uint8 etc.)
-// 	[3]: less than zero check (for signed types)
+//
+//	[1]: type name
+//	[2]: size of index element (8 for uint8 etc.)
+//	[3]: less than zero check (for signed types)
 const stringOneRun = `func (i %[1]s) String() string {
 	if %[3]si >= %[1]s(len(_%[1]sIndex)-1) {
 		return fmt.Sprintf("%[1]s(%%d)", i)
@@ -786,10 +787,11 @@ const stringOneRun = `func (i %[1]s) String() string {
 `
 
 // Arguments to format are:
-// 	[1]: type name
-// 	[2]: lowest defined value for type, as a string
-// 	[3]: size of index element (8 for uint8 etc.)
-// 	[4]: less than zero check (for signed types)
+//
+//	[1]: type name
+//	[2]: lowest defined value for type, as a string
+//	[3]: size of index element (8 for uint8 etc.)
+//	[4]: less than zero check (for signed types)
 const stringOneRunWithOffset = `func (i %[1]s) String() string {
 	i -= %[2]s
 	if %[4]si >= %[1]s(len(_%[1]sIndex)-1) {
